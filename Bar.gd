@@ -27,3 +27,4 @@ func get_input():
 		direction.x -= 1
 	if direction.length() > 0:
 		direction = direction.normalized() * speed
+
