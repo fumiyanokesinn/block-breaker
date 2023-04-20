@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg8ybd1iannj2"]
+
+[ext_resource type="PackedScene" uid="uid://bbkimp7jqns6n" path="res://Bar.tscn" id="1_dn34s"]
+[ext_resource type="PackedScene" uid="uid://ddso4r1rsao66" path="res://Ball.tscn" id="2_hk82f"]
+[ext_resource type="Script" path="res://Ball.gd" id="3_hsvji"]
+
+[node name="Main" type="Node"]
+
+[node name="Bar" parent="." instance=ExtResource("1_dn34s")]
+
+[node name="Ball" parent="." instance=ExtResource("2_hk82f")]
+linear_damp_mode = 1
+script = ExtResource("3_hsvji")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+polygon = PackedVector2Array(480, 0, 0, 0, 0, 600, -40, 600, -40, -40, 512, -40, 512, 600, 480, 600)
