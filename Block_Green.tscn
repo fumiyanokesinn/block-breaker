@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://3qwmjvrb536i"]
+
+[ext_resource type="Texture2D" uid="uid://b2ajhkxy005mo" path="res://image/block_green64x24.png" id="1_b7vwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w3p7"]
+size = Vector2(48, 16)
+
+[node name="Block_Green" type="StaticBody2D" groups=["Blocks"]]
+position = Vector2(360, 112)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.666667)
+texture = ExtResource("1_b7vwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5w3p7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

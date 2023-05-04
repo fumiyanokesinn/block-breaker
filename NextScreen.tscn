@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://dro324ki3jd2d"]
+
+[ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_lsprj"]
+[ext_resource type="Texture2D" uid="uid://cym5xlun2uavo" path="res://image/mark_heart_pink_03.png" id="2_eanbn"]
+
+[node name="NextScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.333333, 0.666667, 0.866667, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Level" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lsprj")
+theme_override_font_sizes/font_size = 40
+text = "Level : 1"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lsprj")
+theme_override_font_sizes/font_size = 40
+text = "Score : 0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Life1" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_eanbn")
+expand_mode = 2
+
+[node name="Life" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lsprj")
+theme_override_font_sizes/font_size = 40
+text = "x 3"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Message" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lsprj")
+theme_override_font_sizes/font_size = 40
+text = "Press Enter"
+horizontal_alignment = 1
