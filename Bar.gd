@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var ball
+
 var speed = 700
 var direction = Vector2()
 var collision_shape
@@ -10,6 +12,7 @@ var barWidth
 func _ready():
 	barWidth = $Sprite2D.texture.get_width() * $Sprite2D.scale.x / 2
 	collision_shape = $CollisionShape2D
+	ball = get_parent().get_node("Ball")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

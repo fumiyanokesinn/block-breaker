@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2fgv34mkfcfs"]
+[gd_scene load_steps=11 format=3 uid="uid://b2fgv34mkfcfs"]
 
 [ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_cri8v"]
 [ext_resource type="PackedScene" uid="uid://ddw8jdm4hkyan" path="res://Bar.tscn" id="1_dn34s"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dw085pitaqhx4" path="res://level_1.tscn" id="4_0vtqu"]
 [ext_resource type="PackedScene" uid="uid://dro324ki3jd2d" path="res://NextScreen.tscn" id="7_fq2p3"]
 [ext_resource type="Script" path="res://NextScreen.gd" id="8_jmy4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tn5o"]
+size = Vector2(480, 120)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ioluv")
@@ -65,19 +68,19 @@ grow_horizontal = 0
 alignment = 2
 metadata/_edit_group_ = true
 
-[node name="Life3" type="TextureRect" parent="HUD/RightBox"]
+[node name="Life3" type="TextureRect" parent="HUD/RightBox" groups=["Life"]]
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("2_tpfbp")
 expand_mode = 2
 
-[node name="Life2" type="TextureRect" parent="HUD/RightBox"]
+[node name="Life2" type="TextureRect" parent="HUD/RightBox" groups=["Life"]]
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("2_tpfbp")
 expand_mode = 2
 
-[node name="Life1" type="TextureRect" parent="HUD/RightBox"]
+[node name="Life1" type="TextureRect" parent="HUD/RightBox" groups=["Life"]]
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("2_tpfbp")
@@ -87,7 +90,7 @@ expand_mode = 2
 position = Vector2(240, 512)
 max_contacts_reported = 1
 contact_monitor = true
-freeze_mode = 1
+can_sleep = false
 linear_damp_mode = 1
 
 [node name="Bar" parent="." instance=ExtResource("1_dn34s")]
@@ -103,5 +106,15 @@ position = Vector2(0, 16)
 process_mode = 3
 script = ExtResource("8_jmy4v")
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(240, 608)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 60)
+shape = SubResource("RectangleShape2D_8tn5o")
+
 [connection signal="body_entered" from="Ball" to="." method="_on_ball_body_entered"]
 [connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
