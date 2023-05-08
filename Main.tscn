@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2fgv34mkfcfs"]
+[gd_scene load_steps=14 format=3 uid="uid://b2fgv34mkfcfs"]
 
 [ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_cri8v"]
 [ext_resource type="PackedScene" uid="uid://ddw8jdm4hkyan" path="res://Bar.tscn" id="1_dn34s"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dw085pitaqhx4" path="res://level_1.tscn" id="4_0vtqu"]
 [ext_resource type="PackedScene" uid="uid://dro324ki3jd2d" path="res://NextScreen.tscn" id="7_fq2p3"]
 [ext_resource type="Script" path="res://NextScreen.gd" id="8_jmy4v"]
+[ext_resource type="AudioStream" uid="uid://bfou8ll0ltta1" path="res://sound/block_hit.mp3" id="10_65dsf"]
+[ext_resource type="AudioStream" uid="uid://br02waatxbgpu" path="res://sound/wall_hit.mp3" id="11_5iot4"]
+[ext_resource type="AudioStream" uid="uid://e6f5mxkns4f5" path="res://sound/main_bgm.mp3" id="12_npwei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tn5o"]
 size = Vector2(480, 120)
@@ -113,6 +116,18 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 60)
 shape = SubResource("RectangleShape2D_8tn5o")
+
+[node name="BlockHit" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, 0)
+stream = ExtResource("10_65dsf")
+
+[node name="WallHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_5iot4")
+
+[node name="MainBGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_npwei")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="body_entered" from="Ball" to="." method="_on_ball_body_entered"]
 [connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
