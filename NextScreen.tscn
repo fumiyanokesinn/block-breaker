@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dro324ki3jd2d"]
+[gd_scene load_steps=4 format=3 uid="uid://dro324ki3jd2d"]
 
 [ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_lsprj"]
 [ext_resource type="Texture2D" uid="uid://cym5xlun2uavo" path="res://image/mark_heart_pink_03.png" id="2_eanbn"]
+[ext_resource type="AudioStream" uid="uid://cp6soh7ggnqby" path="res://sound/push_keyboard.mp3" id="3_jk6fo"]
 
 [node name="NextScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -80,3 +83,6 @@ theme_override_fonts/font = ExtResource("1_lsprj")
 theme_override_font_sizes/font_size = 40
 text = "Press Enter"
 horizontal_alignment = 1
+
+[node name="PushKeyboard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jk6fo")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dule0c1l64and"]
+[gd_scene load_steps=4 format=3 uid="uid://dule0c1l64and"]
 
 [ext_resource type="Script" path="res://GameStartView.gd" id="1_avx4v"]
 [ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_pphds"]
+[ext_resource type="AudioStream" uid="uid://cp6soh7ggnqby" path="res://sound/push_keyboard.mp3" id="3_xdgg8"]
 
 [node name="GameStartView" type="Control"]
 layout_mode = 3
@@ -50,3 +51,6 @@ horizontal_alignment = 1
 
 [node name="SIL" type="Label" parent="VBox"]
 layout_mode = 2
+
+[node name="PushKeyboard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xdgg8")

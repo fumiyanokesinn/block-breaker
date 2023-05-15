@@ -25,8 +25,9 @@ func _ready():
 	get_tree().paused = true
 
 func set_next_level():
+	await get_tree().create_timer(0.5).timeout 
 	get_tree().paused = true
-	await get_tree().create_timer(1).timeout 
+
 	print("set_next_level() start")
 	levelNum += 1
 	
@@ -37,6 +38,8 @@ func set_next_level():
 	
 	bar.position = barPosition
 	ball.mode = 2
+	
+	
 	
 	for block in blocks:
 		block.show()
