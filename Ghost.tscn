@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qmphi80sg6u"]
+
+[ext_resource type="Script" path="res://Ghost.gd" id="1_6u74k"]
+
+[node name="Ghost" type="Sprite2D" groups=["Ghosts"]]
+modulate = Color(0.133333, 0.458824, 0.662745, 1)
+z_as_relative = false
+position = Vector2(192, 264)
+script = ExtResource("1_6u74k")

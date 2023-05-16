@@ -17,6 +17,11 @@ func _ready():
 	blockHit = get_parent().get_node("BlockHit")
 	wallHit = get_parent().get_node("WallHit")
 
+func _physics_process(delta):
+	# プレイヤーが移動しているときタイマーで設定した間隔で残像を出す
+	if direction.length() > 0 and $GhostTimer.time_left == 0:
+		instance_ghost() 
+
 func _on_body_entered(body):
 	ball_speed += speed_up
 	direction = linear_velocity.normalized() # 追加
@@ -48,3 +53,15 @@ func _integrate_forces(state:PhysicsDirectBodyState2D):
 		ball_speed = 430
 		mode = 0
 
+# 残像を出すための関数
+func instance_ghost():
+	# 残像シーンのインスタンスを子ノードに追加する
+	var ghost_scene = preload("res://Ghost.tscn")
+	var ghost = ghost_scene.instantiate()
+	get_parent().add_child(ghost) 
+	ghost.texture = $Sprite2D.texture
+	# 残像がプレイヤーの居た位置に出るようにする
+	ghost.global_position = global_position
+	
+	# タイマーを作動させる
+	$GhostTimer.start()

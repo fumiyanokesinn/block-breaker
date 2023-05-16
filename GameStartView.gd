@@ -1,5 +1,4 @@
 extends Control
-@onready var nextScreen = get_parent().get_node("NextScreen")
 
 func _input(event):
 	if event is InputEventKey:

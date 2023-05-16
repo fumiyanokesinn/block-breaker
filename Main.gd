@@ -25,6 +25,8 @@ func _ready():
 	get_tree().paused = true
 
 func set_next_level():
+	delete_ghosts()
+	
 	await get_tree().create_timer(0.5).timeout 
 	get_tree().paused = true
 
@@ -38,8 +40,6 @@ func set_next_level():
 	
 	bar.position = barPosition
 	ball.mode = 2
-	
-	
 	
 	for block in blocks:
 		block.show()
@@ -67,6 +67,8 @@ func game_over():
 	scoreCount = 0
 
 func _on_area_2d_body_entered(body):
+	delete_ghosts()
+		
 	if lifeCount == 1:
 		game_over()
 	else:
@@ -89,3 +91,9 @@ func reduce_life():
 	ball.mode = 2
 	
 	get_tree().paused = true
+
+# 残像を削除
+func delete_ghosts():
+	var ghosts = get_tree().get_nodes_in_group("Ghosts")
+	for ghost in ghosts:
+		ghost.hide()

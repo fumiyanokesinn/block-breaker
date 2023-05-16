@@ -22,3 +22,7 @@ texture = ExtResource("1_jepi7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nr73l")
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.198
+one_shot = true
