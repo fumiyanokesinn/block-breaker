@@ -3,6 +3,7 @@ extends RigidBody2D
 const MAX_SPEED = 800
 @export var speed_up = 10
 @export var ball_speed = 430
+# 0:待機時　1:発射時 2:リセット時
 @export var mode = 0;
 var direction:Vector2
 var velocity:Vector2
@@ -10,6 +11,8 @@ var paddle:CharacterBody2D
 var blockHit:Node
 var wallHit:Node
 @onready var ballPosition = position
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +22,7 @@ func _ready():
 
 func _physics_process(delta):
 	# プレイヤーが移動しているときタイマーで設定した間隔で残像を出す
-	if direction.length() > 0 and $GhostTimer.time_left == 0:
+	if direction.length() > 0 and $GhostTimer.time_left == 0 and mode == 1:
 		instance_ghost() 
 
 func _on_body_entered(body):
