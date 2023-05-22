@@ -43,6 +43,15 @@ launch_ball={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Ball"
+2d_physics/layer_2="Wall"
+2d_physics/layer_3="Bar"
+2d_physics/layer_4="Area"
+2d_physics/layer_5="Level1"
+2d_physics/layer_6="Level2"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

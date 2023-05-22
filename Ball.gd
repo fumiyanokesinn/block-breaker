@@ -22,7 +22,7 @@ func _ready():
 
 func _physics_process(delta):
 	# プレイヤーが移動しているときタイマーで設定した間隔で残像を出す
-	if direction.length() > 0 and $GhostTimer.time_left == 0 and mode == 1:
+	if direction.length() > 0 and $GhostTimer.time_left == 0 and mode == 1 and ball_speed >= 700:
 		instance_ghost() 
 
 func _on_body_entered(body):
@@ -31,9 +31,8 @@ func _on_body_entered(body):
 	velocity = direction *  min(ball_speed, MAX_SPEED)
 	if body.is_in_group("Blocks"):
 		blockHit.play()
-		body.hide()
-		body.set_collision_layer_value(1,false)
-		body.set_collision_mask_value(1,false)
+		body.queue_free()
+
 	else :
 		wallHit.play()
 	if body.get_name() == "Bar":

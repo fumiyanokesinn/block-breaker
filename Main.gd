@@ -8,6 +8,7 @@ const MAX_BAR = 28
 const MAX_LIFE = 3
 
 @onready var level = $Level1
+#@onready var level2 = $Level2
 @onready var nextScreen = $NextScreen
 @onready var nextScreenLevel = $NextScreen/VBoxContainer/Level
 @onready var nextScreenLife = $NextScreen/VBoxContainer/HBoxContainer/Life
@@ -23,6 +24,8 @@ const MAX_LIFE = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = true
+	level.show()
+#	level2.hide()
 
 func set_next_level():
 	delete_ghosts()
@@ -41,10 +44,11 @@ func set_next_level():
 	bar.position = barPosition
 	ball.mode = 2
 	
-	for block in blocks:
-		block.show()
-		block.set_collision_layer_value(1,true)
-		block.set_collision_mask_value(1,true)
+	# ブロックを再出現する
+#	for block in blocks:
+#		block.show()
+#		block.set_collision_layer_value(1,true)
+#		block.set_collision_mask_value(1,true)
 
 func _on_ball_body_entered(body):
 	if body.is_in_group("Blocks"):

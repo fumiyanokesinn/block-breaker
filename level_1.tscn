@@ -9,84 +9,112 @@
 
 [node name="Block1" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(72, 72)
+collision_layer = 16
 
 [node name="Block2" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(184, 72)
+collision_layer = 16
 
 [node name="Block4" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(240, 72)
+collision_layer = 16
 
 [node name="Block5" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(296, 72)
+collision_layer = 16
 
 [node name="Block6" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(352, 72)
+collision_layer = 16
 
 [node name="Block7" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(408, 72)
+collision_layer = 16
 
 [node name="Block3" parent="." instance=ExtResource("1_d14tw")]
 position = Vector2(128, 72)
+collision_layer = 16
 
 [node name="Block_Green" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(72, 96)
+collision_layer = 16
 
 [node name="Block_Green2" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(128, 96)
+collision_layer = 16
 
 [node name="Block_Green3" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(184, 96)
+collision_layer = 16
 
 [node name="Block_Green4" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(240, 96)
+collision_layer = 16
 
 [node name="Block_Green5" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(296, 96)
+collision_layer = 16
 
 [node name="Block_Green6" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(352, 96)
+collision_layer = 16
 
 [node name="Block_Green7" parent="." instance=ExtResource("2_p288e")]
 position = Vector2(408, 96)
+collision_layer = 16
 
 [node name="Block" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(72, 120)
+collision_layer = 16
 
 [node name="Block8" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(128, 120)
+collision_layer = 16
 
 [node name="Block9" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(184, 120)
+collision_layer = 16
 
 [node name="Block10" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(240, 120)
+collision_layer = 16
 
 [node name="Block11" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(296, 120)
+collision_layer = 16
 
 [node name="Block12" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(352, 120)
+collision_layer = 16
 
 [node name="Block13" parent="." instance=ExtResource("3_abdyl")]
 position = Vector2(408, 120)
+collision_layer = 16
 
 [node name="Block14" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(72, 144)
+collision_layer = 16
 
 [node name="Block15" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(128, 144)
+collision_layer = 16
 
 [node name="Block16" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(184, 144)
+collision_layer = 16
 
 [node name="Block17" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(240, 144)
+collision_layer = 16
 
 [node name="Block18" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(296, 144)
+collision_layer = 16
 
 [node name="Block19" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(352, 144)
+collision_layer = 16
 
 [node name="Block20" parent="." instance=ExtResource("4_aknqo")]
 position = Vector2(408, 144)
+collision_layer = 16

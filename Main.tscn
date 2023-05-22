@@ -92,6 +92,7 @@ expand_mode = 2
 
 [node name="Ball" parent="." instance=ExtResource("2_hk82f")]
 position = Vector2(240, 512)
+collision_mask = 30
 max_contacts_reported = 1
 contact_monitor = true
 can_sleep = false
@@ -99,9 +100,11 @@ linear_damp_mode = 1
 
 [node name="Bar" parent="." instance=ExtResource("1_dn34s")]
 position = Vector2(240, 544)
+collision_layer = 4
 
 [node name="Wall" parent="." instance=ExtResource("3_rhm0b")]
 visible = false
+collision_layer = 2
 
 [node name="Level1" parent="." instance=ExtResource("4_0vtqu")]
 position = Vector2(0, 16)
