@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2fgv34mkfcfs"]
+[gd_scene load_steps=16 format=3 uid="uid://b2fgv34mkfcfs"]
 
 [ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_cri8v"]
 [ext_resource type="PackedScene" uid="uid://ddw8jdm4hkyan" path="res://Bar.tscn" id="1_dn34s"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dsjfjp84n5bpu" path="res://Wall.tscn" id="3_rhm0b"]
 [ext_resource type="PackedScene" uid="uid://dw085pitaqhx4" path="res://level_1.tscn" id="4_0vtqu"]
 [ext_resource type="PackedScene" uid="uid://dro324ki3jd2d" path="res://NextScreen.tscn" id="7_fq2p3"]
+[ext_resource type="PackedScene" uid="uid://c7r05xosnm6sa" path="res://level_2.tscn" id="8_1qvhh"]
 [ext_resource type="Script" path="res://NextScreen.gd" id="8_jmy4v"]
 [ext_resource type="AudioStream" uid="uid://bfou8ll0ltta1" path="res://sound/block_hit.mp3" id="10_65dsf"]
 [ext_resource type="AudioStream" uid="uid://br02waatxbgpu" path="res://sound/wall_hit.mp3" id="11_5iot4"]
@@ -104,9 +105,16 @@ collision_layer = 4
 
 [node name="Wall" parent="." instance=ExtResource("3_rhm0b")]
 visible = false
+position = Vector2(-5.68434e-14, 0)
+rotation = 0.00420571
+scale = Vector2(1.00498, 1.00795)
 collision_layer = 2
 
 [node name="Level1" parent="." instance=ExtResource("4_0vtqu")]
+position = Vector2(-2, 16)
+
+[node name="Level2" parent="." instance=ExtResource("8_1qvhh")]
+visible = false
 position = Vector2(0, 16)
 
 [node name="NextScreen" parent="." instance=ExtResource("7_fq2p3")]
@@ -114,7 +122,9 @@ process_mode = 3
 script = ExtResource("8_jmy4v")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(240, 608)
+visible = false
+position = Vector2(240, 600)
+scale = Vector2(0.985741, 0.016362)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
