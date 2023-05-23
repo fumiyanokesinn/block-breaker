@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://i30ydycpe4tr"]
+
+[ext_resource type="Texture2D" uid="uid://xq7qxtjh58kh" path="res://image/block_blue64x24.png" id="1_3x4wf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w3p7"]
+size = Vector2(48, 16)
+
+[node name="Block" type="StaticBody2D" groups=["BlockHards", "Blocks"]]
+modulate = Color(0.952941, 0.117647, 0, 1)
+position = Vector2(360, 112)
+scale = Vector2(0.911422, 1)
+metadata/_edit_group_ = true
+metadata/stock_hit = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.666667)
+texture = ExtResource("1_3x4wf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5w3p7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

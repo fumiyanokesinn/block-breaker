@@ -4,7 +4,7 @@ var levelNum = 1
 var scoreCount = 0
 var lifeCount = 3
 
-const MAX_BAR = 28
+const MAX_BAR = 1
 const MAX_LIFE = 3
 
 @onready var level1 = $Level1
@@ -102,5 +102,7 @@ func delete_ghosts():
 # レベルを変更する
 func levelChange(levelNum):
 	if(levelNum ==2):
-		level2.show()
+		level2.show() #level2を表示
+		ball.set_collision_mask_value(5,false) # level1の衝突判定を削除		
+		ball.set_collision_mask_value(6,true) # level2の衝突判定を有効
 	

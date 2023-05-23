@@ -29,7 +29,18 @@ func _on_body_entered(body):
 	ball_speed += speed_up
 	direction = linear_velocity.normalized() # 追加
 	velocity = direction *  min(ball_speed, MAX_SPEED)
-	if body.is_in_group("Blocks"):
+	
+	# 硬いボール当たった時の挙動
+	if body.is_in_group("BlockHards"):
+		blockHit.play()
+		body.modulate = Color(0,1,0)
+		print(body.get_meta('stock_hit'))
+		if body.get_meta('stock_hit') ==1:
+			body.queue_free()
+		body.set_meta('stock_hit', 1)
+	
+	# ボール当たった時の挙動
+	if body.is_in_group("Blocks") && !body.is_in_group("BlockHards"):
 		blockHit.play()
 		body.queue_free()
 
