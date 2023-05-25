@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2fgv34mkfcfs"]
+[gd_scene load_steps=15 format=3 uid="uid://b2fgv34mkfcfs"]
 
 [ext_resource type="FontFile" uid="uid://citwg6wjlqfl4" path="res://tft/TitilliumWeb-Black.ttf" id="1_cri8v"]
 [ext_resource type="PackedScene" uid="uid://ddw8jdm4hkyan" path="res://Bar.tscn" id="1_dn34s"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dsjfjp84n5bpu" path="res://Wall.tscn" id="3_rhm0b"]
 [ext_resource type="PackedScene" uid="uid://dw085pitaqhx4" path="res://level_1.tscn" id="4_0vtqu"]
 [ext_resource type="PackedScene" uid="uid://dro324ki3jd2d" path="res://NextScreen.tscn" id="7_fq2p3"]
-[ext_resource type="PackedScene" uid="uid://c7r05xosnm6sa" path="res://level_2.tscn" id="8_1qvhh"]
 [ext_resource type="Script" path="res://NextScreen.gd" id="8_jmy4v"]
 [ext_resource type="AudioStream" uid="uid://bfou8ll0ltta1" path="res://sound/block_hit.mp3" id="10_65dsf"]
 [ext_resource type="AudioStream" uid="uid://br02waatxbgpu" path="res://sound/wall_hit.mp3" id="11_5iot4"]
@@ -50,14 +49,14 @@ metadata/_edit_group_ = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_cri8v")
 theme_override_font_sizes/font_size = 16
-text = "Level : 1"
+text = "Level : 1 SPEED : 420"
 uppercase = true
 
 [node name="Score" type="Label" parent="HUD/LeftBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_cri8v")
 theme_override_font_sizes/font_size = 16
-text = "Score : 0"
+text = "Score : 0 MAXSPEED : 600"
 uppercase = true
 
 [node name="RightBox" type="HBoxContainer" parent="HUD"]
@@ -112,9 +111,6 @@ collision_layer = 2
 
 [node name="Level1" parent="." instance=ExtResource("4_0vtqu")]
 position = Vector2(-2, 16)
-
-[node name="Level2" parent="." instance=ExtResource("8_1qvhh")]
-position = Vector2(0, 16)
 
 [node name="NextScreen" parent="." instance=ExtResource("7_fq2p3")]
 process_mode = 3

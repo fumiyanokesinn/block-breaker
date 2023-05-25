@@ -4,11 +4,10 @@ var levelNum = 1
 var scoreCount = 0
 var lifeCount = 3
 
-const MAX_BAR = 1
+const MAX_BAR = 28
 const MAX_LIFE = 3
 
 @onready var level1 = $Level1
-@onready var level2 = $Level2
 @onready var nextScreen = $NextScreen
 @onready var nextScreenLevel = $NextScreen/VBoxContainer/Level
 @onready var nextScreenLife = $NextScreen/VBoxContainer/HBoxContainer/Life
@@ -25,7 +24,6 @@ const MAX_LIFE = 3
 func _ready():
 	get_tree().paused = true
 	level1.show()
-	level2.hide()
 
 func set_next_level():
 	delete_ghosts()
@@ -37,22 +35,38 @@ func set_next_level():
 	levelNum += 1
 	
 	nextScreenLevel.text = "Level : %s" % levelNum
+	nextScreenScore.text = "MAXSPEED : %s + 100\nSPEED : %s + 50\nScore : %s" % [$Ball.MAX_SPEED,$Ball.start_speed,scoreCount]
+	
 	nextScreen.show()
 	
-	hudLevel.text = "Level : %s" % levelNum
+	
 	
 	bar.position = barPosition
 	ball.mode = 2
 	
-	levelChange(levelNum)
+	# ブロックを再出現する
+	for block in blocks:
+		block.show()
+		block.set_collision_layer_value(5,true)
+	
+	# レベルアップ毎にボールスピードを上げる
+	$Ball.MAX_SPEED += 100
+	$Ball.start_speed += 50
+	$Ball.ball_speed = $Ball.start_speed
+	hudLevel.text = "Level : %s SPEED : %s" % [levelNum,$Ball.ball_speed]
+	hudScore.text = "Score : %s MAXSPEED : %s" % [scoreCount,$Ball.MAX_SPEED]
+
 
 func _on_ball_body_entered(body):
+	# スピードのラベルを変更する
+	hudLevel.text = "Level : %s SPEED : %s" % [levelNum,$Ball.ball_speed]
+	
 	if body.is_in_group("Blocks"):
+		# スコアのラベルを変更する
 		scoreCount += 1
-		hudScore.text = "Score : %s" % scoreCount
-		nextScreenScore.text = "Score : %s" % scoreCount
+		hudScore.text = "Score : %s MAXSPEED : %s" % [scoreCount,$Ball.MAX_SPEED]
+		nextScreenScore.text = "MAXSPEED : %s + 100\nSPEED : %s + 50\nScore : %s" % [$Ball.MAX_SPEED,$Ball.ball_speed,scoreCount]
 		if scoreCount == levelNum * MAX_BAR:
-			scoreCount = 0
 			set_next_level()
 
 func game_over():
@@ -86,6 +100,9 @@ func reduce_life():
 		else:
 			life.hide()
 	
+	nextScreenScore.text = "MAXSPEED : %s \nSPEED : %s\nScore : %s" % [$Ball.MAX_SPEED,$Ball.start_speed,scoreCount]
+	hudLevel.text = "Level : %s SPEED : %s" % [levelNum,$Ball.start_speed]
+	$Ball.ball_speed = $Ball.start_speed
 	nextScreen.show()
 	bar.position = barPosition
 	ball.mode = 2
@@ -99,10 +116,10 @@ func delete_ghosts():
 		ghost.hide()
 		
 
-# レベルを変更する
-func levelChange(levelNum):
-	if(levelNum ==2):
-		level2.show() #level2を表示
-		ball.set_collision_mask_value(5,false) # level1の衝突判定を削除		
-		ball.set_collision_mask_value(6,true) # level2の衝突判定を有効
+# レベルを変更する (使用していない)
+#func levelChange(levelNum):
+#	if(levelNum ==2):
+#		level2.show() #level2を表示
+#		ball.set_collision_mask_value(5,false) # level1の衝突判定を削除		
+#		ball.set_collision_mask_value(6,true) # level2の衝突判定を有効
 	

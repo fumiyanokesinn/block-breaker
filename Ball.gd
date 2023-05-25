@@ -1,7 +1,8 @@
 extends RigidBody2D
 
-const MAX_SPEED = 800
-@export var speed_up = 10
+@export var start_speed = 430
+@export var MAX_SPEED = 600
+@export var speed_up = 5
 @export var ball_speed = 430
 # 0:待機時　1:発射時 2:リセット時
 @export var mode = 0;
@@ -13,7 +14,6 @@ var wallHit:Node
 @onready var ballPosition = position
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	paddle = get_parent().get_node("Bar")
@@ -22,27 +22,28 @@ func _ready():
 
 func _physics_process(delta):
 	# プレイヤーが移動しているときタイマーで設定した間隔で残像を出す
-	if direction.length() > 0 and $GhostTimer.time_left == 0 and mode == 1 and ball_speed >= 700:
+	if direction.length() > 0 and $GhostTimer.time_left == 0 and mode == 1 and ball_speed >= 800:
 		instance_ghost() 
 
 func _on_body_entered(body):
-	ball_speed += speed_up
+	ball_speed = min(ball_speed + speed_up, MAX_SPEED)
 	direction = linear_velocity.normalized() # 追加
-	velocity = direction *  min(ball_speed, MAX_SPEED)
+	velocity = direction * ball_speed
 	
-	# 硬いボール当たった時の挙動
-	if body.is_in_group("BlockHards"):
-		blockHit.play()
-		body.modulate = Color(0,1,0)
-		print(body.get_meta('stock_hit'))
-		if body.get_meta('stock_hit') ==1:
-			body.queue_free()
-		body.set_meta('stock_hit', 1)
+	# 硬いボール当たった時の挙動 (使用していない)
+#	if body.is_in_group("BlockHards"):
+#		blockHit.play()
+#		body.modulate = Color(0,1,0)
+#		print(body.get_meta('stock_hit'))
+#		if body.get_meta('stock_hit') ==1:
+#			body.queue_free()
+#		body.set_meta('stock_hit', 1)
 	
 	# ボール当たった時の挙動
 	if body.is_in_group("Blocks") && !body.is_in_group("BlockHards"):
 		blockHit.play()
-		body.queue_free()
+		body.hide()
+		body.set_collision_layer_value(5,false)
 
 	else :
 		wallHit.play()
@@ -63,7 +64,6 @@ func _integrate_forces(state:PhysicsDirectBodyState2D):
 			state.apply_central_impulse(velocity)
 	if mode ==2:
 		state.transform.origin = Vector2(ballPosition)
-		ball_speed = 430
 		mode = 0
 
 # 残像を出すための関数
